@@ -27,10 +27,10 @@ investor.lc.get_portfolio_list = lambda names_only: ['apple', 'bar', 'foo']
 """
 With default option
 """
-print '\nWith a default option'
+print('\nWith a default option')
 while True:
     chosen = settings.portfolio_picker('The default')
-    print 'You chose: {0}\n'.format(chosen)
+    print('You chose: {0}\n'.format(chosen))
 
     if not util.prompt_yn('Again?', 'n'):
         break
@@ -38,10 +38,10 @@ while True:
 """
 No default option
 """
-print '\nWithout a default option'
+print('\nWithout a default option')
 while True:
     chosen = settings.portfolio_picker()
-    print 'You chose: {0}\n'.format(chosen)
+    print('You chose: {0}\n'.format(chosen))
 
     if not util.prompt_yn('Again?', 'n'):
         break
@@ -49,11 +49,11 @@ while True:
 """
 No options
 """
-print '\nWithout any options'
+print('\nWithout any options')
 investor.lc.get_portfolio_list = lambda names_only: []
 while True:
     chosen = settings.portfolio_picker()
-    print 'You chose: {0}\n'.format(chosen)
+    print('You chose: {0}\n'.format(chosen))
 
     if not util.prompt_yn('Again?', 'n'):
         break
@@ -79,16 +79,16 @@ class TestLogger():
 
     def error(self, msg):
         self.errors.append(msg)
-        print '\nINVESTOR ERROR: {0}'.format(msg)
+        print('\nINVESTOR ERROR: {0}'.format(msg))
 
         # Traceback
         exc_type, exc_value, exc_traceback = sys.exc_info()
         traceback.print_tb(exc_traceback, limit=2, file=sys.stdout)
 
     def warning(self, msg):
-        print '\nINVESTOR WARNING: {0}\n'.format(msg)
+        print('\nINVESTOR WARNING: {0}\n'.format(msg))
         self.warnings.append(msg)
 
     def debug(self, msg):
-        print 'INVESTOR DEBUG: {0}'.format(msg)
+        print('INVESTOR DEBUG: {0}'.format(msg))
         self.debugs.append(msg)

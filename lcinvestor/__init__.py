@@ -79,44 +79,44 @@ class AutoInvestor:
         return util.get_version();
 
     def welcome_screen(self):
-        print "\n///--------------------------- $$$ ---------------------------\\\\\\"
-        print '|    Welcome to the unofficial Lending Club investment tool     |'
-        print " ---------------------------------------------------------------- \n"
+        print("\n///--------------------------- $$$ ---------------------------\\\\\\")
+        print('|    Welcome to the unofficial Lending Club investment tool     |')
+        print(" ---------------------------------------------------------------- \n")
 
     def get_auth(self):
-        print 'To start, we need to log you into Lending Club (your password will never be saved)\n'
+        print('To start, we need to log you into Lending Club (your password will never be saved)\n')
         while True:
             self.settings.get_auth_settings()
 
-            print '\nAuthenticating...'
+            print('\nAuthenticating...')
             try:
                 return self.authenticate()
             except Exception as e:
-                print '\nLogin failed: {0}'.format(str(e.value))
-                print "Please try again\n"
+                print('\nLogin failed: {0}'.format(str(e.value)))
+                print("Please try again\n")
 
     def setup(self):
         """
         Setup the investor to run
         """
         if self.verbose:
-            print 'VERBOSE OUTPUT IS ON\n'
+            print('VERBOSE OUTPUT IS ON\n')
 
         if not self.authed:
             self.get_auth()
             self.settings.select_profile()
 
-        print 'You have ${0} in your account, free to invest\n'.format(self.lc.get_cash_balance())
+        print('You have ${0} in your account, free to invest\n'.format(self.lc.get_cash_balance()))
 
         # Investment settings
-        print 'Now let\'s define what you want to do'
+        print('Now let\'s define what you want to do')
 
         # Use the settings from last time
         if self.settings.profile_loaded is not False:
             summary = self.settings.show_summary()
 
             if summary is False: # there was an error with saved settings
-                print '\nThere was an error with your saved settings. Please go through the prompts again.\n'
+                print('\nThere was an error with your saved settings. Please go through the prompts again.\n')
                 self.settings.get_investment_settings()
 
             if util.prompt_yn('Would you like to use these settings?', 'y'):
@@ -127,7 +127,7 @@ class AutoInvestor:
             self.settings.get_investment_settings()
 
         # All ready to start running
-        print '\nThat\'s all we need. Now, as long as this is running, your account will be checked every {0} minutes and invested if enough funds are available.\n'.format(self.settings['frequency'])
+        print('\nThat\'s all we need. Now, as long as this is running, your account will be checked every {0} minutes and invested if enough funds are available.\n'.format(self.settings['frequency']))
 
     def authenticate(self):
         """

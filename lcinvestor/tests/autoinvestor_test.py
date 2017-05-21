@@ -4,7 +4,7 @@ import sys
 import os
 import unittest
 import subprocess
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import traceback
 import shutil
 from time import sleep
@@ -164,18 +164,18 @@ class TestLogger():
 
     def error(self, msg):
         self.errors.append(msg)
-        print '\nINVESTOR ERROR: {0}'.format(msg)
+        print('\nINVESTOR ERROR: {0}'.format(msg))
 
         # Traceback
         exc_type, exc_value, exc_traceback = sys.exc_info()
         traceback.print_tb(exc_traceback, limit=2, file=sys.stdout)
 
     def warning(self, msg):
-        print '\nINVESTOR WARNING: {0}\n'.format(msg)
+        print('\nINVESTOR WARNING: {0}\n'.format(msg))
         self.warnings.append(msg)
 
     def debug(self, msg):
-        print 'INVESTOR DEBUG: {0}'.format(msg)
+        print('INVESTOR DEBUG: {0}'.format(msg))
         self.debugs.append(msg)
 
 

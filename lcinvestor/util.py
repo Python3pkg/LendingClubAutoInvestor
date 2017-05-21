@@ -96,7 +96,7 @@ def get_input(msg):
     """
     Wrapper for raw_input that can be overridden for unit testing
     """
-    return raw_input(msg)
+    return input(msg)
 
 
 def prompt(msg, prefill=False):
@@ -128,7 +128,7 @@ def prompt_float(msg, prefill=False):
         if type(response) == float:
             return response
         if not isfloat(response):
-            print 'The value you entered must be a whole number, without symbols or decimal points'
+            print('The value you entered must be a whole number, without symbols or decimal points')
         else:
             return float(response)
 
@@ -146,7 +146,7 @@ def prompt_int(msg, prefill=False):
         if type(response) == int:
             return response
         if not response.isdigit():
-            print 'The value you entered must be a whole number, without symbols or decimal points'
+            print('The value you entered must be a whole number, without symbols or decimal points')
         else:
             return int(response)
 
